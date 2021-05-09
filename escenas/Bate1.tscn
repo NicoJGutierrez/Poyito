@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/bate.png" type="Texture" id=1]
+[ext_resource path="res://animbate.tres" type="Animation" id=2]
+[ext_resource path="res://escenas/Bate1.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.99966
+height = 52.9691
+
+[sub_resource type="Animation" id=2]
+resource_name = "Bate izq"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 4.92458, 0.34151, 1 ),
+"update": 0,
+"values": [ 0.0, -150.0, -105.0 ]
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 0, -15 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -35 )
+scale = Vector2( 1.5, 1.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Bate = ExtResource( 2 )
+"anims/Bate izq" = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -35 )
+rotation = 0.785398
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )
